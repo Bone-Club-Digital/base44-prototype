@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { User as UserIcon, LogOut, ShoppingCart, Users, MessageSquare, Gift, Calendar, Coins, Package, Shield, ImageIcon } from "lucide-react";
+import { LayoutGrid, User as UserIcon, LogOut, ShoppingCart, Users, MessageSquare, Gift, Settings, GraduationCap, Star, LogIn, Calendar, Coins, Package, Shield, ImageIcon } from "lucide-react";
 import { User } from '@/entities/User';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { UserProvider, useUser } from './components/auth/UserProvider';
 import { CartProvider, useCart } from './components/shop/CartProvider';
-import { CartModal } from './components/shop/CartModal';
+import CartModal from './components/shop/CartModal';
 import { RealMoneyCartProvider, useRealMoneyCart } from './components/shop/RealMoneyCartProvider';
 import { RealMoneyCartModal } from './components/shop/RealMoneyCartModal';
 import UnreadMessagesBadge from './components/layout/UnreadMessagesBadge';
