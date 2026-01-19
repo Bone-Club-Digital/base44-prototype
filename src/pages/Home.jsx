@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -226,7 +225,7 @@ export default function LobbyPage() {
         const { data } = await getLeagueProposalsForUser();
         setLeagueProposals(data || []);
       } catch (error) {
-        console.warn("Could not fetch league proposals:", error);
+        console.warn("Could not fetch league proposals (subscription required):", error);
         setLeagueProposals([]);
       }
     };
@@ -455,7 +454,7 @@ export default function LobbyPage() {
         }
         
         fetchGamesData();
-        cleanupAbandonedGames();
+        cleanupAbandonedGames().catch(err => console.warn('Cleanup skipped (subscription required)'));
         
       } catch (error) {
         console.warn("Game polling error:", error.message);
@@ -567,7 +566,7 @@ export default function LobbyPage() {
       refetchUnreadMessages();
     } catch (error) {
       console.error('Cleanup failed:', error);
-      setCleanupSuccessMessage('An error occurred during cleanup.');
+      setCleanupSuccessMessage('This feature requires an active subscription.');
     }
   };
 
@@ -575,15 +574,14 @@ export default function LobbyPage() {
     try {
       const { data } = await cleanupStaleFriendRequests();
       setFriendCleanupMessage(data.message || 'Friend request cleanup ran successfully.');
-      fetchPendingNotifications(); // This will refresh the friend request list
-      refetchUnreadMessages(); // This will update the unread count in the header
+      fetchPendingNotifications();
+      refetchUnreadMessages();
     } catch (error) {
       console.error('Friend request cleanup failed:', error);
-      setFriendCleanupMessage('An error occurred during friend request cleanup.');
+      setFriendCleanupMessage('This feature requires an active subscription.');
     }
   };
 
-  // ADD NEW DEBUG HANDLER
   const handleDebugFriendRequests = async () => {
     try {
       const { data } = await debugFriendRequestData();
@@ -592,7 +590,7 @@ export default function LobbyPage() {
       alert(`Debug complete! Found ${data.orphaned_messages?.length || 0} orphaned messages. Check console for details.`);
     } catch (error) {
       console.error('Debug failed:', error);
-      alert('Debug failed: ' + error.message);
+      alert('This feature requires an active subscription.');
     }
   };
 

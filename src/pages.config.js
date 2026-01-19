@@ -1,89 +1,89 @@
-import Home from './pages/Home';
-import Game from './pages/Game';
-import Shop from './pages/Shop';
-import Admin from './pages/Admin';
-import AdminProducts from './pages/AdminProducts';
-import AdminUsers from './pages/AdminUsers';
-import RedeemBones from './pages/RedeemBones';
-import AdminCategories from './pages/AdminCategories';
-import Profile from './pages/Profile';
-import Clubs from './pages/Clubs';
-import Tournaments from './pages/Tournaments';
-import TournamentBracket from './pages/TournamentBracket';
-import Messages from './pages/Messages';
-import AdminTournaments from './pages/AdminTournaments';
-import ManageMembers from './pages/ManageMembers';
-import AdminBadges from './pages/AdminBadges';
-import AdminPlans from './pages/AdminPlans';
 import Academy from './pages/Academy';
-import Membership from './pages/Membership';
-import ManageEvents from './pages/ManageEvents';
-import TournamentDetails from './pages/TournamentDetails';
-import ManageTournament from './pages/ManageTournament';
+import Admin from './pages/Admin';
 import AdminAvatars from './pages/AdminAvatars';
-import ClubSettings from './pages/ClubSettings';
-import MemberDirectory from './pages/MemberDirectory';
-import PublicProfile from './pages/PublicProfile';
+import AdminBadges from './pages/AdminBadges';
+import AdminCategories from './pages/AdminCategories';
 import AdminHomeBanners from './pages/AdminHomeBanners';
-import Friends from './pages/Friends';
-import MyGames from './pages/MyGames';
-import ManageBones from './pages/ManageBones';
-import Checkout from './pages/Checkout';
-import MyOrders from './pages/MyOrders';
+import AdminMedia from './pages/AdminMedia';
 import AdminOrders from './pages/AdminOrders';
-import LeagueDetails from './pages/LeagueDetails';
+import AdminPlans from './pages/AdminPlans';
+import AdminProducts from './pages/AdminProducts';
+import AdminTournaments from './pages/AdminTournaments';
+import AdminUsers from './pages/AdminUsers';
+import Checkout from './pages/Checkout';
 import ClubDetails from './pages/ClubDetails';
 import ClubHouse from './pages/ClubHouse';
-import Topic from './pages/Topic';
+import ClubSettings from './pages/ClubSettings';
+import Clubs from './pages/Clubs';
+import Friends from './pages/Friends';
+import Game from './pages/Game';
+import Home from './pages/Home';
+import LeagueDetails from './pages/LeagueDetails';
+import ManageBones from './pages/ManageBones';
 import ManageClubHouse from './pages/ManageClubHouse';
-import SharedGameSnapshot from './pages/SharedGameSnapshot';
+import ManageEvents from './pages/ManageEvents';
+import ManageMembers from './pages/ManageMembers';
+import ManageTournament from './pages/ManageTournament';
+import MemberDirectory from './pages/MemberDirectory';
+import Membership from './pages/Membership';
+import Messages from './pages/Messages';
+import MyGames from './pages/MyGames';
+import MyOrders from './pages/MyOrders';
 import MyPositions from './pages/MyPositions';
-import AdminMedia from './pages/AdminMedia';
+import Profile from './pages/Profile';
+import PublicProfile from './pages/PublicProfile';
+import RedeemBones from './pages/RedeemBones';
+import SharedGameSnapshot from './pages/SharedGameSnapshot';
+import Shop from './pages/Shop';
+import Topic from './pages/Topic';
+import TournamentBracket from './pages/TournamentBracket';
+import TournamentDetails from './pages/TournamentDetails';
+import Tournaments from './pages/Tournaments';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
-    "Home": Home,
-    "Game": Game,
-    "Shop": Shop,
-    "Admin": Admin,
-    "AdminProducts": AdminProducts,
-    "AdminUsers": AdminUsers,
-    "RedeemBones": RedeemBones,
-    "AdminCategories": AdminCategories,
-    "Profile": Profile,
-    "Clubs": Clubs,
-    "Tournaments": Tournaments,
-    "TournamentBracket": TournamentBracket,
-    "Messages": Messages,
-    "AdminTournaments": AdminTournaments,
-    "ManageMembers": ManageMembers,
-    "AdminBadges": AdminBadges,
-    "AdminPlans": AdminPlans,
     "Academy": Academy,
-    "Membership": Membership,
-    "ManageEvents": ManageEvents,
-    "TournamentDetails": TournamentDetails,
-    "ManageTournament": ManageTournament,
+    "Admin": Admin,
     "AdminAvatars": AdminAvatars,
-    "ClubSettings": ClubSettings,
-    "MemberDirectory": MemberDirectory,
-    "PublicProfile": PublicProfile,
+    "AdminBadges": AdminBadges,
+    "AdminCategories": AdminCategories,
     "AdminHomeBanners": AdminHomeBanners,
-    "Friends": Friends,
-    "MyGames": MyGames,
-    "ManageBones": ManageBones,
-    "Checkout": Checkout,
-    "MyOrders": MyOrders,
+    "AdminMedia": AdminMedia,
     "AdminOrders": AdminOrders,
-    "LeagueDetails": LeagueDetails,
+    "AdminPlans": AdminPlans,
+    "AdminProducts": AdminProducts,
+    "AdminTournaments": AdminTournaments,
+    "AdminUsers": AdminUsers,
+    "Checkout": Checkout,
     "ClubDetails": ClubDetails,
     "ClubHouse": ClubHouse,
-    "Topic": Topic,
+    "ClubSettings": ClubSettings,
+    "Clubs": Clubs,
+    "Friends": Friends,
+    "Game": Game,
+    "Home": Home,
+    "LeagueDetails": LeagueDetails,
+    "ManageBones": ManageBones,
     "ManageClubHouse": ManageClubHouse,
-    "SharedGameSnapshot": SharedGameSnapshot,
+    "ManageEvents": ManageEvents,
+    "ManageMembers": ManageMembers,
+    "ManageTournament": ManageTournament,
+    "MemberDirectory": MemberDirectory,
+    "Membership": Membership,
+    "Messages": Messages,
+    "MyGames": MyGames,
+    "MyOrders": MyOrders,
     "MyPositions": MyPositions,
-    "AdminMedia": AdminMedia,
+    "Profile": Profile,
+    "PublicProfile": PublicProfile,
+    "RedeemBones": RedeemBones,
+    "SharedGameSnapshot": SharedGameSnapshot,
+    "Shop": Shop,
+    "Topic": Topic,
+    "TournamentBracket": TournamentBracket,
+    "TournamentDetails": TournamentDetails,
+    "Tournaments": Tournaments,
 }
 
 export const pagesConfig = {
