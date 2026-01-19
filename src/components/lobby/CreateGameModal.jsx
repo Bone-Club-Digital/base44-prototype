@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   Dialog,
@@ -47,18 +46,19 @@ export default function CreateGameModal({ isOpen, onClose, onCreate, user, refet
         try {
           const { data: roomData, error: roomError } = await createDailyRoom();
           if (roomError || !roomData?.url) {
-            console.error('Error creating video room:', roomError);
-            setError('Failed to create video chat room. Please try without video chat.');
-            setIsLoading(false); // Set loading to false before returning
-            return; // Stop execution if video room creation fails
+            console.warn('Error creating video room:', roomError);
+            // Don't block match creation, just disable video chat
+            setUseVideoChat(false);
+            videoRoomUrl = null;
+          } else {
+            videoRoomUrl = roomData.url;
+            console.log('Video room created:', videoRoomUrl);
           }
-          videoRoomUrl = roomData.url;
-          console.log('Video room created:', videoRoomUrl);
         } catch (roomErr) {
-          console.error('Exception creating video room:', roomErr);
-          setError('Failed to create video chat room. Please try without video chat.');
-          setIsLoading(false); // Set loading to false before returning
-          return; // Stop execution if an exception occurs during video room creation
+          console.warn('Exception creating video room:', roomErr);
+          // Don't block match creation, just disable video chat
+          setUseVideoChat(false);
+          videoRoomUrl = null;
         }
       }
 
