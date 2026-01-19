@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useUser } from '../components/auth/UserProvider';
 import { Link, useNavigate } from 'react-router-dom';
@@ -179,18 +178,31 @@ export default function MemberDirectoryPage() {
     }
 
     try {
-      // Call the new secure backend function
-      await sendFriendRequest({
+      // Create friend request directly
+      const newRequest = await FriendRequest.create({
+        sender_id: user.id,
+        sender_username: user.username,
         recipient_id: memberData.user_id,
         recipient_username: memberData.username,
+        status: 'pending'
       });
 
-      // Update local state to show the request is sent, providing immediate feedback
-      setFriendRequests(prev => [...prev, {
+      // Send notification message
+      await Message.create({
         sender_id: user.id,
+        sender_username: user.username,
         recipient_id: memberData.user_id,
-        status: 'pending'
-      }]);
+        recipient_username: memberData.username,
+        type: 'notification',
+        subject: 'Friend Request',
+        body: `${user.username} sent you a friend request.`,
+        status: 'unread',
+        related_entity_type: 'FriendRequest',
+        related_entity_id: newRequest.id
+      });
+
+      // Update local state
+      setFriendRequests(prev => [...prev, newRequest]);
 
       // Show success modal
       setModalState({
@@ -201,8 +213,7 @@ export default function MemberDirectoryPage() {
       });
     } catch (error) {
       console.error('Error sending friend request:', error);
-      const errorMessage = error.response?.data?.error || 'Failed to send friend request. Please try again.';
-      alert(errorMessage);
+      alert('Failed to send friend request. Please try again.');
     }
   };
 
