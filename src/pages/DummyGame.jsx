@@ -169,16 +169,13 @@ export default function DummyGamePage() {
             <Card className="border-0 elegant-shadow" style={{ backgroundColor: '#c2b2a3' }}>
               <CardContent className="p-6">
                 <BackgammonBoard
-                  board={board}
-                  onPointClick={handlePointClick}
-                  onBarClick={handleBarClick}
-                  onOffClick={handleOffClick}
-                  selectedPoint={selectedPoint}
-                  currentTurn={currentTurn}
-                  validMoves={[]}
-                  checkersOff={{ teal: 0, bone: 0 }}
-                  doublingCube={doublingCube}
-                  onDoublingCubeClick={handleDoublingCubeClick}
+                  position={board}
+                  bar={{ teal: 0, bone: 0 }}
+                  bornOff={{ teal: 0, bone: 0 }}
+                  isPlayerTurn={true}
+                  playerColor={currentTurn}
+                  doublingCube={{ value: doublingCube.value, owner: doublingCube.owner, disabled: false }}
+                  onCheckerClick={handlePointClick}
                 />
 
                 {/* Dice Display */}
