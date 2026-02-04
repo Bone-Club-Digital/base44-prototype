@@ -247,7 +247,11 @@ export default function LobbyPage() {
       const { openGames: fetchedOpenGames } = response.data;
       setOpenGames(fetchedOpenGames?.slice(0, 50) || []);
     } catch (error) {
-      console.warn("Failed to load games data:", error.message);
+      if (error.response?.status === 500) {
+        console.warn("Backend function unavailable (subscription required)");
+      } else {
+        console.warn("Failed to load games data:", error.message);
+      }
       setOpenGames([]);
     } finally {
       setGamesLoading(false);
@@ -266,7 +270,11 @@ export default function LobbyPage() {
       const { allPlayers: fetchedAllPlayers } = response.data;
       setAllPlayers(fetchedAllPlayers?.slice(0, 100) || []);
     } catch (error) {
-      console.warn("Failed to load players data:", error.message);
+      if (error.response?.status === 500) {
+        console.warn("Backend function unavailable (subscription required)");
+      } else {
+        console.warn("Failed to load players data:", error.message);
+      }
       setAllPlayers([]);
     } finally {
       setPlayersLoading(false);
