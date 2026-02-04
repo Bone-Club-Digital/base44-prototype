@@ -39,7 +39,6 @@ import Topic from './pages/Topic';
 import TournamentBracket from './pages/TournamentBracket';
 import TournamentDetails from './pages/TournamentDetails';
 import Tournaments from './pages/Tournaments';
-import DummyGame from './pages/DummyGame';
 import __Layout from './Layout.jsx';
 
 
@@ -85,7 +84,6 @@ export const PAGES = {
     "TournamentBracket": TournamentBracket,
     "TournamentDetails": TournamentDetails,
     "Tournaments": Tournaments,
-    "DummyGame": DummyGame,
 }
 
 export const pagesConfig = {
