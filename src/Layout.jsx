@@ -91,8 +91,8 @@ function AppLayout({ children }) {
     window.location.reload();
   };
 
-  const handleLogin = async () => {
-    await User.login();
+  const handleLogin = () => {
+    User.login();
   };
 
   const isRedeemBonesPage = location.pathname === createPageUrl("RedeemBones");

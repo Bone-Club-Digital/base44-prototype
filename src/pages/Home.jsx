@@ -476,8 +476,8 @@ export default function LobbyPage() {
     };
   }, [user, userLoading, navigate, fetchGamesData]);
 
-  const handleLogin = async () => {
-    await User.login();
+  const handleLogin = () => {
+    User.login();
   };
 
   const handleUsernameComplete = () => {
