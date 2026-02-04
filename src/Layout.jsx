@@ -92,24 +92,7 @@ function AppLayout({ children }) {
   };
 
   const handleLogin = async () => {
-    try {
-      // Try different Base44 login methods to get the full modal
-      if (User.loginWithModal) {
-        await User.loginWithModal();
-      } else if (User.showLoginModal) {
-        await User.showLoginModal();
-      } else if (User.authenticate) {
-        await User.authenticate();
-      } else {
-        // Fallback to standard login but with redirect
-        const currentUrl = window.location.href;
-        await User.loginWithRedirect(currentUrl);
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      // Fallback to basic login
-      await User.login();
-    }
+    await User.login();
   };
 
   const isRedeemBonesPage = location.pathname === createPageUrl("RedeemBones");
