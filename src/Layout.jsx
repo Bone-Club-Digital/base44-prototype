@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { LayoutGrid, User as UserIcon, LogOut, ShoppingCart, Users, MessageSquare, Gift, Settings, GraduationCap, Star, LogIn, Calendar, Coins, Package, Shield, ImageIcon } from "lucide-react";
-import { User } from '@/entities/User';
+import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -73,6 +73,10 @@ function AppLayout({ children }) {
     document.body.appendChild(script);
   }, []);
 
+  const handleLogin = () => {
+    base44.auth.redirectToLogin();
+  };
+
   const handleLogout = async () => {
     // Clear the user's last_active timestamp before logging out
     if (user) {
@@ -87,8 +91,7 @@ function AppLayout({ children }) {
       }
     }
     
-    await User.logout();
-    window.location.reload();
+    await base44.auth.logout();
   };
 
   const isRedeemBonesPage = location.pathname === createPageUrl("RedeemBones");
@@ -742,7 +745,7 @@ function AppLayout({ children }) {
                         </DropdownMenuContent>
                       </DropdownMenu>
                     ) : (
-                      <Button onClick={() => User.login()} size="sm" style={{ backgroundColor: '#f26222', color: 'white' }} className="uppercase text-xs px-3">
+                      <Button onClick={handleLogin} size="sm" style={{ backgroundColor: '#f26222', color: 'white' }} className="uppercase text-xs px-3">
                         Login
                       </Button>
                     )}
@@ -868,7 +871,7 @@ function AppLayout({ children }) {
                       </DropdownMenuContent>
                     </DropdownMenu>
                   ) : (
-                    <Button onClick={() => User.login()} style={{ backgroundColor: '#f26222', color: 'white' }} className="uppercase">
+                    <Button onClick={handleLogin} style={{ backgroundColor: '#f26222', color: 'white' }} className="uppercase">
                       Login to Play
                     </Button>
                   )}

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Gamepad2, PlusCircle, LogIn, RefreshCw, Clock, Trash2, User as UserIcon, Star, Video, ChevronLeft, ChevronRight, Trophy } from 'lucide-react';
 import { GameSession } from '@/entities/GameSession';
-import { User } from '@/entities/User';
+import { base44 } from '@/api/base44Client';
 import { Message } from '@/entities/Message';
 import { ScheduledMatch } from '@/entities/ScheduledMatch';
 import { LeagueParticipant } from '@/entities/LeagueParticipant';
@@ -469,7 +469,7 @@ export default function LobbyPage() {
   }, [user, userLoading, navigate, fetchGamesData]);
 
   const handleLogin = () => {
-    User.login();
+    base44.auth.redirectToLogin();
   };
 
   const handleUsernameComplete = () => {
@@ -479,7 +479,7 @@ export default function LobbyPage() {
 
   const handleJoinGame = async (gameId) => {
     if (!user) {
-      User.login();
+      base44.auth.redirectToLogin();
       return;
     }
 
