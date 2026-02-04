@@ -479,7 +479,7 @@ export default function LobbyPage() {
 
   const handleJoinGame = async (gameId) => {
     if (!user) {
-      await handleLogin();
+      User.login();
       return;
     }
 
