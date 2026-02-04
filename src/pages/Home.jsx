@@ -281,7 +281,7 @@ export default function LobbyPage() {
 
     try {
         if (settings.bones_stake > 0) {
-            await User.updateMyUserData({
+            await base44.auth.updateMe({
                 bones_balance: user.bones_balance - settings.bones_stake,
             });
             refetchUser(); // Refetch user after updating balance
@@ -874,7 +874,7 @@ export default function LobbyPage() {
                         Join the premier online backgammon community and test your skills against players worldwide.
                       </p>
                       <Button 
-                        onClick={() => User.login()} 
+                        onClick={handleLogin} 
                         size="lg"
                         className="uppercase font-bold text-lg px-8 py-4"
                         style={{ backgroundColor: '#f26222', color: 'white' }}
