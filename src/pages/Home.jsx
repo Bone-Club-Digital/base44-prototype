@@ -882,7 +882,7 @@ export default function LobbyPage() {
                         Join the premier online backgammon community and test your skills against players worldwide.
                       </p>
                       <Button 
-                        onClick={handleLogin} 
+                        onClick={() => User.login()} 
                         size="lg"
                         className="uppercase font-bold text-lg px-8 py-4"
                         style={{ backgroundColor: '#f26222', color: 'white' }}
