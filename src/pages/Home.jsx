@@ -469,21 +469,7 @@ export default function LobbyPage() {
   }, [user, userLoading, navigate, fetchGamesData]);
 
   const handleLogin = async () => {
-    try {
-      if (User.loginWithModal) {
-        await User.loginWithModal();
-      } else if (User.showLoginModal) {
-        await User.showLoginModal();
-      } else if (User.authenticate) {
-        await User.authenticate();
-      } else {
-        const currentUrl = window.location.href;
-        await User.loginWithRedirect(currentUrl);
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      await User.login();
-    }
+    await User.login();
   };
 
   const handleUsernameComplete = () => {
@@ -493,7 +479,7 @@ export default function LobbyPage() {
 
   const handleJoinGame = async (gameId) => {
     if (!user) {
-      await User.login();
+      await handleLogin();
       return;
     }
 
