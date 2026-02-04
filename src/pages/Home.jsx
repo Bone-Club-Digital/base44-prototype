@@ -243,15 +243,11 @@ export default function LobbyPage() {
         getPublicLobbyData(),
         new Promise((_, reject) => setTimeout(() => reject(new Error('Lobby data timeout')), 5000))
       ]);
-      
+
       const { openGames: fetchedOpenGames } = response.data;
       setOpenGames(fetchedOpenGames?.slice(0, 50) || []);
     } catch (error) {
-      if (error.response?.status === 500) {
-        console.warn("Backend function unavailable (subscription required)");
-      } else {
-        console.warn("Failed to load games data:", error.message);
-      }
+      console.error("Failed to load games data:", error);
       setOpenGames([]);
     } finally {
       setGamesLoading(false);
@@ -266,15 +262,11 @@ export default function LobbyPage() {
         getPublicLobbyData(),
         new Promise((_, reject) => setTimeout(() => reject(new Error('Lobby data timeout')), 5000))
       ]);
-      
+
       const { allPlayers: fetchedAllPlayers } = response.data;
       setAllPlayers(fetchedAllPlayers?.slice(0, 100) || []);
     } catch (error) {
-      if (error.response?.status === 500) {
-        console.warn("Backend function unavailable (subscription required)");
-      } else {
-        console.warn("Failed to load players data:", error.message);
-      }
+      console.error("Failed to load players data:", error);
       setAllPlayers([]);
     } finally {
       setPlayersLoading(false);
@@ -560,7 +552,7 @@ export default function LobbyPage() {
       refetchUnreadMessages();
     } catch (error) {
       console.error('Cleanup failed:', error);
-      setCleanupSuccessMessage('This feature requires an active subscription.');
+      setCleanupSuccessMessage('Cleanup failed: ' + (error.message || 'Unknown error'));
     }
   };
 
@@ -572,7 +564,7 @@ export default function LobbyPage() {
       refetchUnreadMessages();
     } catch (error) {
       console.error('Friend request cleanup failed:', error);
-      setFriendCleanupMessage('This feature requires an active subscription.');
+      setFriendCleanupMessage('Cleanup failed: ' + (error.message || 'Unknown error'));
     }
   };
 
@@ -584,7 +576,7 @@ export default function LobbyPage() {
       alert(`Debug complete! Found ${data.orphaned_messages?.length || 0} orphaned messages. Check console for details.`);
     } catch (error) {
       console.error('Debug failed:', error);
-      alert('This feature requires an active subscription.');
+      alert('Debug failed: ' + (error.message || 'Unknown error'));
     }
   };
 
