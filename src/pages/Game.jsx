@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -1522,9 +1521,23 @@ export default function GamePage() {
                         <div className="max-w-[1400px] mx-auto space-y-4 p-2 md:p-6" data-game-board>
                             <GameConnectionStatus /> 
                             
-                            <Link to={createPageUrl("Home")} className="inline-flex items-center gap-2 hover:opacity-70 transition-colors" style={{ color: '#5a3217' }}>
+                            <Button 
+                                onClick={async () => {
+                                    if (window.confirm('Are you sure you want to leave this match? This will end the match immediately.')) {
+                                        try {
+                                            await GameSession.delete(gameSession.id);
+                                            navigate(createPageUrl('Home'));
+                                        } catch (error) {
+                                            console.error('Failed to leave match:', error);
+                                        }
+                                    }
+                                }}
+                                variant="ghost"
+                                className="inline-flex items-center gap-2 hover:opacity-70 transition-colors" 
+                                style={{ color: '#5a3217' }}
+                            >
                                 <ArrowLeft className="w-4 h-4" /> <span>Back to Lobby</span>
-                            </Link>
+                            </Button>
 
                             <div className="text-center">
                                 {gameSession.status !== 'completed' ? (
