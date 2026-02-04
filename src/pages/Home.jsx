@@ -469,7 +469,7 @@ export default function LobbyPage() {
   }, [user, userLoading, navigate, fetchGamesData]);
 
   const handleLogin = () => {
-    window.location.href = window.location.origin + '?redirect_to_login=true';
+    base44.auth.redirectToLogin();
   };
 
   const handleUsernameComplete = () => {
