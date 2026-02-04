@@ -74,7 +74,7 @@ function AppLayout({ children }) {
   }, []);
 
   const handleLogin = () => {
-    base44.auth.redirectToLogin();
+    window.location.href = window.location.origin + '?redirect_to_login=true';
   };
 
   const handleLogout = async () => {
