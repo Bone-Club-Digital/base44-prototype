@@ -746,7 +746,7 @@ function AppLayout({ children }) {
                         </DropdownMenuContent>
                       </DropdownMenu>
                     ) : (
-                      <Button onClick={handleLogin} size="sm" style={{ backgroundColor: '#f26222', color: 'white' }} className="uppercase text-xs px-3">
+                      <Button onClick={() => User.login()} size="sm" style={{ backgroundColor: '#f26222', color: 'white' }} className="uppercase text-xs px-3">
                         Login
                       </Button>
                     )}
@@ -872,7 +872,7 @@ function AppLayout({ children }) {
                       </DropdownMenuContent>
                     </DropdownMenu>
                   ) : (
-                    <Button onClick={handleLogin} style={{ backgroundColor: '#f26222', color: 'white' }} className="uppercase">
+                    <Button onClick={() => User.login()} style={{ backgroundColor: '#f26222', color: 'white' }} className="uppercase">
                       Login to Play
                     </Button>
                   )}
