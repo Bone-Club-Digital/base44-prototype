@@ -1,0 +1,18 @@
+# CODEOWNERS file for base44-prototype
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+*       @Bone-Club-Digital/maintainers
+
+# Frontend components
+/src/components/    @Bone-Club-Digital/frontend-team
+
+# Backend functions
+/functions/         @Bone-Club-Digital/backend-team
+
+# Configuration files
+*.config.js         @Bone-Club-Digital/maintainers
+*.json              @Bone-Club-Digital/maintainers
+
+# Documentation
+*.md                @Bone-Club-Digital/maintainers

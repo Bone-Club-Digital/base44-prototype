@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Discussion Forum
+    url: https://github.com/Bone-Club-Digital/base44-prototype/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: Security Issue
+    url: https://github.com/Bone-Club-Digital/base44-prototype/security/advisories/new
+    about: Report a security vulnerability
