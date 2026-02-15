@@ -1523,13 +1523,41 @@ export default function GamePage() {
                             
                             <Button 
                                 onClick={async () => {
-                                    if (window.confirm('Are you sure you want to leave this match? This will end the match immediately.')) {
-                                        try {
+                                    if (!window.confirm('Are you sure you want to leave this match? This will end the match immediately.')) {
+                                        return;
+                                    }
+                                    
+                                    try {
+                                        // If game hasn't started yet, just delete it
+                                        if (gameSession.status === 'waiting_for_start' || gameSession.status === 'waiting_for_opponent') {
                                             await GameSession.delete(gameSession.id);
-                                            navigate(createPageUrl('Home'));
-                                        } catch (error) {
-                                            console.error('Failed to leave match:', error);
+                                            
+                                            // Handle tournament match if exists
+                                            if (gameSession.tournament_match_id) {
+                                                await TournamentMatch.update(gameSession.tournament_match_id, {
+                                                    status: 'cancelled',
+                                                });
+                                            }
+                                        } else {
+                                            // If game is in progress, forfeit it
+                                            const opponentId = playerColor === 'teal' ? gameSession.player_bone_id : gameSession.player_teal_id;
+                                            const targetScore = gameSession.match_state?.target_score || 7;
+
+                                            await GameSession.update(gameSession.id, {
+                                                status: 'completed',
+                                                winner_id: opponentId,
+                                                match_state: {
+                                                    ...(gameSession.match_state || {}),
+                                                    player_teal_score: playerColor === 'teal' ? (gameSession.match_state?.player_teal_score || 0) : targetScore,
+                                                    player_bone_score: playerColor === 'bone' ? (gameSession.match_state?.player_bone_score || 0) : targetScore,
+                                                }
+                                            });
                                         }
+                                        
+                                        navigate(createPageUrl('Home'));
+                                    } catch (error) {
+                                        console.error('Failed to leave match:', error);
+                                        alert('Failed to leave match. Please try again.');
                                     }
                                 }}
                                 variant="ghost"
